@@ -1,0 +1,30 @@
+<button class="btn btn-primary" type="button">New owner</button>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3>Lista de Owners</h3>
+        <table class="table table-hover table-bordered caption-top">
+          <thead>
+            <tr>
+              <th scope="col">indice</th>
+              <th scope="col">Name</th>
+              <th scope="col">Adress</th>
+              <th scope="col">City</th>
+              <th scope="col">Date of birth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let owner of owners; let item=index">
+              <th scope="row">{{item+1}}</th>
+              <td>{{owner.name}}</td>
+              <td>{{owner.address}}</td>
+              <td>{{owner.city}}</td>
+              <td>{{owner.dateOfBirth }}</td>
+            </tr>   
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

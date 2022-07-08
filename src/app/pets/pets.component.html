@@ -1,0 +1,33 @@
+
+<button class="btn btn-primary" type="button">New pet</button>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3>Lista de Pets</h3>
+        <table class="table table-hover table-bordered caption-top">
+          <thead>
+            <tr>
+              <th scope="col">indice</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Breed</th>
+              <th scope="col">Date of birth</th>
+              <th scope="col">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fact of pets; let item=index">
+              <th scope="row">{{item+1}}</th>
+              <td>{{fact.name}}</td>
+              <td>{{fact.description}}</td>
+              <td>{{fact.breed}}</td>
+              <td>{{fact.dateOfBirth }}</td>
+              <td>{{fact.type}}</td>
+            </tr>   
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
