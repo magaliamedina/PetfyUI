@@ -6,8 +6,11 @@ import { AppComponent } from './app.component';
 import { PetsService } from './services/pets.service';
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './users/users.component';
-import { OwnersComponent } from './owners/owners.component';
+import { OwnersComponent } from './components/owners/owners.component';
 import { PetsComponent } from './pets/pets.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes=[
   {path:'users', component: UsersComponent},
@@ -24,11 +27,14 @@ const appRoutes: Routes=[
     AppComponent,
     UsersComponent,
     OwnersComponent,
-    PetsComponent
+    PetsComponent,
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [PetsService, UsersService],
