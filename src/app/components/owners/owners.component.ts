@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { OwnersService } from '../../services/owners.service';
+import { OwnersService } from '../../_service/owners.service';
 
 @Component({
   selector: 'app-owners',
@@ -12,12 +12,13 @@ export class OwnersComponent implements OnInit {
   _url='https://localhost:7102/api/owners';
   owners:any;
 
-  /*constructor(private ownerService: OwnersService) { 
+  /*constructor(private ownersService: OwnershService) { 
     this.ownerService.getOwners().subscribe((resp:any)=>{
     console.log(this.owners);
     this.owners=resp;
   })
   }*/
+
   constructor(private http:HttpClient){ }
 
   ngOnInit(): void {
