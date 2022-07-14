@@ -1,1 +1,11 @@
-<p>register works!</p>
+<br>
+<div class="container">
+    <form (ngSubmit)="onSubmitRegister()" [formGroup]="registerForm">
+        <h1 class="h3 mb-3 fw-normal">Register</h1>
+        <input type="text" class="form-control" formControlName="username" placeholder="Username" >
+        <input type="password" class="form-control" placeholder="Password" formControlName="password">
+        <br>
+        <button class="w-100 btn btn-lg btn-primary form-control" type="submit">Register</button>
+        <a class="w-100 btn btn-lg btn-link form-control" routerLink="/login">Login</a>
+    </form>
+</div>

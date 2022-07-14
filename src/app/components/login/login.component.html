@@ -2,13 +2,8 @@
 <div class="container">
     <form (ngSubmit)="onSubmitLogin()" [formGroup]="loginForm">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-    
-        <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" placeholder="Username" formControlName="username">
-        </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
-        </div>
+        <input type="text" class="form-control"  placeholder="Username" formControlName="Username">
+        <input type="password" class="form-control" placeholder="Password" formControlName="Password">
     
         <div class="checkbox mb-3">
           <label>
@@ -16,6 +11,6 @@
           </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary form-control" type="submit">Sign in</button>
-        <a class="w-100 btn btn-lg btn-link form-control">Register</a>
+        <a class="w-100 btn btn-lg btn-link form-control" routerLink="/register">Register</a>
     </form>
 </div>
