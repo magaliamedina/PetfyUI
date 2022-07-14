@@ -6,6 +6,9 @@
       <li class="nav-item"><a href="/owners" class="nav-link">Owners</a></li>
       <li class="nav-item"><a href="/vaccine" class="nav-link">Vaccine</a></li>
       <li class="nav-item"><a href="/users" class="nav-link">Users</a></li>
+      <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+      <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
+
     </ul>
     <form #loginForm="ngForm" action="" class="d-flex" (ngSubmit)="login()" *ngIf="(this.authService.currentUser$| async) == null">
         <input type="text" name="username" [(ngModel)]="user.username" id="" class="form-control me-2" placeholder="Username">

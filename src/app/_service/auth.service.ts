@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Register } from '../_models/register';
 import { User } from '../_models/user';
 
 @Injectable({
@@ -38,4 +39,18 @@ export class AuthService {
   setCurrentUser(user:User){
     this.currentUserSubject.next(user);
   }
+
+  register(register: Register){    
+    return  this.http.post(this.baseUrl + 'account/register', register).pipe(
+      map((response:User) => {
+        const user=response;
+        if(user){
+          localStorage.setItem('user',JSON.stringify(user));
+          //guardar el usuario
+          this.currentUserSubject.next(user);
+        }
+      })
+    );
+  }
+  
 }

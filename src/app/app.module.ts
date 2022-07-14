@@ -10,12 +10,14 @@ import { OwnersComponent } from './components/owners/owners.component';
 import { PetsComponent } from './components/pets/pets.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
 
 const appRoutes: Routes=[
   {path:'users', component: UsersComponent},
   {path:'pets', component: PetsComponent},
   {path:'owners', component: OwnersComponent},
+  {path:'login', component: LoginComponent},
   /*{path:'contacto', component: ContactoComponentComponent},
   {path:'actualiza/:id', component: ActualizaComponentComponent},
   //el path del error tiene que estar en ultimo lugar
@@ -29,12 +31,14 @@ const appRoutes: Routes=[
     OwnersComponent,
     PetsComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [PetsService, UsersService],
