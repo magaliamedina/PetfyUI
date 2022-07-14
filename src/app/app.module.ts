@@ -5,21 +5,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PetsService } from 'src/app/_service/pets.service';
 import { UsersService } from 'src/app/_service/users.service';
-import { UsersComponent } from './components/users/users.component';
 import { OwnersComponent } from './components/owners/owners.component';
 import { PetsComponent } from './components/pets/pets.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 
 const appRoutes: Routes=[
-  {path:'users', component: UsersComponent},
   {path:'pets', component: PetsComponent},
   {path:'owners', component: OwnersComponent},
   {path:'login', component: LoginComponent},
-  /*{path:'contacto', component: ContactoComponentComponent},
-  {path:'actualiza/:id', component: ActualizaComponentComponent},
+  {path:'register', component: RegisterComponent},
+  {path:'', component: HomeComponent}
+  /*
   //el path del error tiene que estar en ultimo lugar
   {path:'**', component: ErrorPersonalizadoComponent}*/
 ];
@@ -27,12 +27,12 @@ const appRoutes: Routes=[
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent,
     OwnersComponent,
     PetsComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

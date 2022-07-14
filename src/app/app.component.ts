@@ -12,10 +12,9 @@ export class AppComponent implements OnInit{
   title = 'API PetFy';
   users:any;
 
-  constructor(private http: HttpClient, private authService: AuthService){}
+  constructor( private authService: AuthService){}
   
   ngOnInit(): void {
-    this.getUsers();
     this.setCurrentUser();
   }
 
@@ -26,14 +25,5 @@ export class AppComponent implements OnInit{
     this.authService.setCurrentUser(user);
   }
 
-  getUsers(){
-    this.http.get('https://localhost:7102/api/Users').subscribe({
-      //next
-    next: response => {this.users= response; console.log(response)},
-    //error
-    error: error => console.error(error),
-    //complete si o si
-    complete: () => console.info('complete')
-    });
-  }
+  
 }

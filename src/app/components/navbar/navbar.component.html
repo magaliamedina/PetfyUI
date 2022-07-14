@@ -1,22 +1,25 @@
-
-<nav class="navbar navbar-expand-sm bg-light">
+<div class="container bg-danger">
+  <nav class="navbar navbar-expand-sm">
+    <h3>Petfy</h3>
     <ul class="navbar-nav" *ngIf="this.authService.currentUser$ | async">
-      <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
       <li class="nav-item"><a href="/pets" class="nav-link">Pets</a></li>
       <li class="nav-item"><a href="/owners" class="nav-link">Owners</a></li>
       <li class="nav-item"><a href="/vaccine" class="nav-link">Vaccine</a></li>
       <li class="nav-item"><a href="/users" class="nav-link">Users</a></li>
       <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-      <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
 
     </ul>
-    <form #loginForm="ngForm" action="" class="d-flex" (ngSubmit)="login()" *ngIf="(this.authService.currentUser$| async) == null">
+    <!--form #loginForm="ngForm" action="" class="d-flex" (ngSubmit)="login()" *ngIf="(this.authService.currentUser$| async) == null">
         <input type="text" name="username" [(ngModel)]="user.username" id="" class="form-control me-2" placeholder="Username">
         <input type="password" name="password" [(ngModel)]="user.password" id="" class="form-control me-2" placeholder="Password">
         <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+    </form-->
+
     <div *ngIf="this.authService.currentUser$| async">
       <p >Welcome user</p>
       <button (click)="logout()" class="btn btn-primary">Logout</button>
     </div>
 </nav>
+</div>
+
