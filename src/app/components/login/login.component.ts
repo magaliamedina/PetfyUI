@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   //formulario reactivo: se construye en tiempo de ejecucion
   loginForm: FormGroup;
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService, private router:Router) { }
 
   ngOnInit(): void {
     this.loginForm=new FormGroup({
@@ -26,7 +27,11 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){ //que cumpla la validacion
       this.auth.login(this.loginForm.value).subscribe({
         //next
-      next: user => {console.log(user)},
+      next: user => {
+        console.log(user); 
+        //cuando se loguea que baja al home
+        //this.router.navigate(['/pets']);
+      },
       //error
       error: error => console.error(error),
       //complete si o si

@@ -12,13 +12,16 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const appRoutes: Routes=[
-  {path:'pets', component: PetsComponent},
-  {path:'owners', component: OwnersComponent},
+  {path:'', canActivate:[AuthGuard], children: [
+    {path:'', component: HomeComponent},
+    {path:'pets', component: PetsComponent},
+    {path:'owners', component: OwnersComponent},
+  ]},
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
-  {path:'', component: HomeComponent}
   /*
   //el path del error tiene que estar en ultimo lugar
   {path:'**', component: ErrorPersonalizadoComponent}*/

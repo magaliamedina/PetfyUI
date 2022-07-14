@@ -40,6 +40,12 @@ export class AuthService {
     this.currentUserSubject.next(user);
   }
 
+  loggedIn(){
+    //traigo el user del localStorage
+    const user: User= JSON.parse(localStorage.getItem('user'));
+    return !!user;
+  }
+
   register(register: Register){    
     return  this.http.post(this.baseUrl + 'account/register', register).pipe(
       map((response:User) => {

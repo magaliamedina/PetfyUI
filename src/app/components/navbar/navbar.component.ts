@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/_service/auth.service';
 export class NavbarComponent implements OnInit {
 
   user:any={};
-  loggedIn:boolean;
   //currentUser$ : Observable<User>;
 
   constructor(public authService:AuthService) { }
@@ -22,7 +21,7 @@ export class NavbarComponent implements OnInit {
     //console.log(this.user);
     this.authService.login(this.user).subscribe({
       //next
-    next: user => {console.log(user), this.loggedIn=true},
+    next: user => {console.log(user)},
     //error
     error: error => console.error(error),
     //complete si o si
@@ -31,7 +30,6 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
-    this.loggedIn=false;
     this.authService.logout();
   }
 
