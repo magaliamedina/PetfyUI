@@ -14,7 +14,12 @@ export class AuthService {
   //crear uan variable observable. Por convencion se usa el signo $
   currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    if(this.loggedIn()){
+      const user :User= JSON.parse(localStorage.getItem('user'));
+      this.setCurrentUser(user);
+    }
+  }
 
   login(user:any){
     //observable
@@ -36,6 +41,7 @@ export class AuthService {
     this.currentUserSubject.next(null);
   }
 
+  //guardar el usuario
   setCurrentUser(user:User){
     this.currentUserSubject.next(user);
   }
@@ -43,6 +49,7 @@ export class AuthService {
   loggedIn(){
     //traigo el user del localStorage
     const user: User= JSON.parse(localStorage.getItem('user'));
+    //si esta logueado devuelve true sino false
     return !!user;
   }
 

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       next: user => {
         console.log(user); 
         //cuando se loguea que baja al home
-        //this.router.navigate(['/pets']);
+        this.router.navigate(['/']);
       },
       //error
       error: error => console.error(error),
