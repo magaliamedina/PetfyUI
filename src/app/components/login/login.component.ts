@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       },
       //error
-      error: error => {console.error(error); this.toastr.error("Hubo un error: "+error);},
+      error: error => {console.error(error)},
       //complete si o si
       complete: () => console.info('complete')
       });

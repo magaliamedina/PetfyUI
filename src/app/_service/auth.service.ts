@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Register } from '../_models/register';
 import { User } from '../_models/user';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   baseUrl='https://localhost:7102/api/';
-  private currentUserSubject = new ReplaySubject<User>(1);
+  currentUser:User= new User();
+  private currentUserSubject = new BehaviorSubject<User>(this.currentUser);
   //crear uan variable observable. Por convencion se usa el signo $
   currentUser$ = this.currentUserSubject.asObservable();
 
@@ -64,6 +66,10 @@ export class AuthService {
         }
       })
     );
+  }
+
+  public get currentUserValue(){
+    return this.currentUserSubject.value;
   }
   
 }

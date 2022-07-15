@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,6 +14,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ToastrModule } from 'ngx-toastr';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
 
 const appRoutes: Routes=[
   {path:'', canActivate:[AuthGuard], children: [
@@ -46,7 +48,9 @@ const appRoutes: Routes=[
     RouterModule.forRoot(appRoutes),
     ToastrModule.forRoot()
   ],
-  providers: [PetsService, UsersService],
+  providers: [PetsService, UsersService, 
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

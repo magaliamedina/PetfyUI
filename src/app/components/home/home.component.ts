@@ -9,16 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   users:any;
-  httpOptions:any; //headers:HttpHeaders
+  //httpOptions:any; //headers:HttpHeaders
 
   //se ejecuta primero el constructor despues el onInit
   constructor(private http: HttpClient) {  
-    this.httpOptions={
+    /*this.httpOptions={
     headers : new HttpHeaders({
       Authorization: "Bearer " + JSON.parse(localStorage.getItem('user'))?.token
       //console.log(JSON.parse(localStorage.getItem('user'))?.token)
     })
-  }
+  }*/
 }
 
   ngOnInit(): void {
@@ -26,8 +26,9 @@ export class HomeComponent implements OnInit {
     }
 
   getUsers(){
+    //PRIMERO VA AL INTERCEPTOR JWT
     //Request
-    this.http.get('https://localhost:7102/api/users', this.httpOptions).subscribe({
+    this.http.get('https://localhost:7102/api/users').subscribe({
       //next
     next: response => {this.users= response; console.log(response)},
     //error
