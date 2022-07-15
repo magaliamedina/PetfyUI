@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { ToastrModule } from 'ngx-toastr';
 
 const appRoutes: Routes=[
   {path:'', canActivate:[AuthGuard], children: [
@@ -42,7 +43,8 @@ const appRoutes: Routes=[
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ToastrModule.forRoot()
   ],
   providers: [PetsService, UsersService],
   bootstrap: [AppComponent]

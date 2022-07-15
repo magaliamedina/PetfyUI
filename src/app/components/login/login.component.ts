@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   //formulario reactivo: se construye en tiempo de ejecucion
   loginForm: FormGroup;
 
-  constructor(private auth:AuthService, private router:Router) { }
+  constructor(private auth:AuthService, private router:Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.loginForm=new FormGroup({
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       },
       //error
-      error: error => console.error(error),
+      error: error => {console.error(error); this.toastr.error("Hubo un error: "+error);},
       //complete si o si
       complete: () => console.info('complete')
       });

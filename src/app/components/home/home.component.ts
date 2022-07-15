@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,14 +9,25 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   users:any;
-  constructor(private http: HttpClient) { }
+  httpOptions:any; //headers:HttpHeaders
+
+  //se ejecuta primero el constructor despues el onInit
+  constructor(private http: HttpClient) {  
+    this.httpOptions={
+    headers : new HttpHeaders({
+      Authorization: "Bearer " + JSON.parse(localStorage.getItem('user'))?.token
+      //console.log(JSON.parse(localStorage.getItem('user'))?.token)
+    })
+  }
+}
 
   ngOnInit(): void {
     this.getUsers();
-  }
+    }
 
   getUsers(){
-    this.http.get('https://localhost:7102/api/Users').subscribe({
+    //Request
+    this.http.get('https://localhost:7102/api/users', this.httpOptions).subscribe({
       //next
     next: response => {this.users= response; console.log(response)},
     //error
