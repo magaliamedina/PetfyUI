@@ -7,16 +7,28 @@ import { PetsService } from 'src/app/_service/pets.service';
   styleUrls: ['./pets.component.scss']
 })
 export class PetsComponent implements OnInit {
-  public pets:Array<any>=[];
-
+  pets:any;
+  
   constructor(private petsService: PetsService) { 
-    this.petsService.getPets().subscribe((resp:any)=>{
-      //console.log(this.pets);
-      this.pets=resp;
-    })
+    
   }
 
   ngOnInit(): void {
+    this.getPets();
+  }
+
+  getPets(){
+    this.petsService.getPets().subscribe({
+      //next
+    next: pets => {
+      console.log(pets); 
+      this.pets = pets;
+    },
+    //error
+    error: error => {console.error(error)},
+    //complete si o si
+    complete: () => console.info('complete')
+    });
   }
 
 }

@@ -1,33 +1,20 @@
 
+<br>
+<br>
 <button class="btn btn-primary" type="button">New pet</button>
-<br>
-<br>
-<div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h3>Lista de Pets</h3>
-        <table class="table table-hover table-bordered caption-top">
-          <thead>
-            <tr>
-              <th scope="col">Index</th>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Breed</th>
-              <th scope="col">Date of birth</th>
-              <th scope="col">Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let fact of pets; let item=index">
-              <th scope="row">{{item+1}}</th>
-              <td>{{fact.name}}</td>
-              <td>{{fact.description}}</td>
-              <td>{{fact.breed}}</td>
-              <td>{{fact.dateOfBirth }}</td>
-              <td>{{fact.type}}</td>
-            </tr>   
-          </tbody>
-        </table>
-      </div>
+
+<div class="container" style="display: flex;">
+  <br>
+  <div class="card" style="width: 18rem;" *ngFor="let pet of pets; let item=index">
+    <img class="card-img-top" src="https://ca-times.brightspotcdn.com/dims4/default/2d72a57/2147483647/strip/true/crop/2048x1363+0+0/resize/840x559!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Faa%2F0d%2F824acfd8d0b54956858cd7045915%2Fla-es-los-perros-son-capaces-de-sentir-amor-20-001" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{item+1}} : {{pet.name}}</h5>
+      <p class="card-text">{{pet.description}} | {{pet.breed}}</p>
+      <a href="#" class="btn btn-danger">Eliminar</a>
+
+      <a href="#" class="btn btn-primary">See details</a>
     </div>
   </div>
+</div>
+
+ 

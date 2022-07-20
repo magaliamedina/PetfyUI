@@ -5,12 +5,13 @@ import { map } from 'rxjs/operators';
 import { Register } from '../_models/register';
 import { User } from '../_models/user';
 import { UsersService } from './users.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl='https://localhost:7102/api/';
+  baseUrl=environment.baseUrl+'account/';
   currentUser:User= new User();
   private currentUserSubject = new BehaviorSubject<User>(this.currentUser);
   //crear uan variable observable. Por convencion se usa el signo $
@@ -26,7 +27,7 @@ export class AuthService {
   login(user:any){
     //observable
         //pipe es para guardar en el local storage
-    return  this.http.post(this.baseUrl + 'account/login', user).pipe(
+    return  this.http.post(this.baseUrl + 'login', user).pipe(
       map((response:User) => {
         const user=response;
         if(user){
@@ -56,7 +57,7 @@ export class AuthService {
   }
 
   register(register: Register){    
-    return  this.http.post(this.baseUrl + 'account/register', register).pipe(
+    return  this.http.post(this.baseUrl + 'register', register).pipe(
       map((response:User) => {
         const user=response;
         if(user){
