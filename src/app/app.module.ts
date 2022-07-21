@@ -16,12 +16,16 @@ import { AuthGuard } from './_guards/auth.guard';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { CreatePetComponent } from './components/pets/create-pet/create-pet.component';
+import { UpdatePetComponent } from './components/pets/update-pet/update-pet.component';
 
 const appRoutes: Routes=[
   {path:'', canActivate:[AuthGuard], children: [
     {path:'', component: HomeComponent},
     {path:'pets', component: PetsComponent},
     {path:'owners', component: OwnersComponent},
+    {path:'pets/add', component: CreatePetComponent},
+    {path:'pets/edit', component: UpdatePetComponent},
   ]},
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
@@ -38,7 +42,9 @@ const appRoutes: Routes=[
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    CreatePetComponent,
+    UpdatePetComponent
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,12 @@ export class PetsService {
    //GetPetsByOwnerId GET OwnerId
    //GetPetById
 
-   //AddPet POST Pet
+    //AddPet POST Pet
+    AddPet(pet:any){
+      var data: {};
+      console.log(pet);
+      return this.http.post(this.basePetServiceUrl,pet);
+    }
    //EditPet PUT Pet, PetID
    //DeletePet DELETE PetID
 }

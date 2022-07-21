@@ -12,7 +12,9 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private route:Router) { }
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, 
+    //formBuilder servicio para construir el formulario
+    private route:Router) { }
 
   ngOnInit(): void {
     this.registerForm=this.formBuilder.group({

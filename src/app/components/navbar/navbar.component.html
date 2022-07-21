@@ -16,9 +16,9 @@
           <button type="submit" class="btn btn-primary">Login</button>
       </form-->
   
-      <div *ngIf="this.authService.currentUser$| async">
-        <p >Welcome user</p>
-        <button (click)="logout()" class="btn btn-primary">Logout</button>
+      <div *ngIf="this.authService.currentUser$| async" style="display: flex;">
+        <p style="margin-left: 15px; margin-top:15px">Welcome user</p>
+        <button (click)="logout()" class="btn btn-primary" style="margin-left: 15px;">Logout</button>
       </div>
   </nav>
   </div>
