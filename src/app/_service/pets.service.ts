@@ -23,6 +23,9 @@ export class PetsService {
    //GetPetsVaccine GET PetId
    //GetPetsByOwnerId GET OwnerId
    //GetPetById
+    GetPetById(id: number){
+      return this.http.get(this.basePetServiceUrl+id)
+    }
 
     //AddPet POST Pet
     AddPet(pet:any){
@@ -30,6 +33,10 @@ export class PetsService {
       console.log(pet);
       return this.http.post(this.basePetServiceUrl,pet);
     }
-   //EditPet PUT Pet, PetID
+
+    //EditPet PUT Pet, PetID
+    UpdatePet(petId:number,pet:any){
+      return this.http.put(this.basePetServiceUrl +petId,pet);
+    }
    //DeletePet DELETE PetID
 }

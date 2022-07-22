@@ -1,1 +1,21 @@
-<p>update-pet works!</p>
+<br>
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="updatePetForm" class="register-form">
+        <h1 class="h3 mb-3 fw-normal">Update pet</h1>
+        <input type="text" class="form-control" formControlName="name" placeholder="Name" >
+        <input type="number" class="form-control" formControlName="petNumber" placeholder="Pet Number" >
+        <input type="text" class="form-control" formControlName="description" placeholder="Description" >
+        <input type="text" class="form-control" formControlName="breed" placeholder="Breed" >
+        <input type="datetime" class="form-control" formControlName="dateOfBirth" placeholder="Date of Birth" >
+        <!--input type="text" class="form-control" formControlName="type" placeholder="Type" -->
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="type">
+            <option value="Dog" selected>Dog</option>
+            <option value="Cat">Cat</option>
+          </select>
+        <input class="form-control" formControlName="ownerID" placeholder="Owner id" hidden="true">
+        <br>
+        <!-- el formulario tiene que tener un button de type submit si o si-->
+        <button class="w-100 btn btn-lg btn-primary form-control" type="submit">Update</button>
+        <button class="w-100 btn btn-lg btn-danger form-control" routerLink="/pets">Cancel</button>
+    </form>
+</div>

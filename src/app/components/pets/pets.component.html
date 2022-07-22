@@ -17,7 +17,8 @@
       <p class="card-text">{{pet.description}}</p>
 
       <a href="#" class="btn btn-danger">Eliminar</a>
-      <a href="#" class="btn btn-primary" style="margin-left: 10px;" routerLink="/pets/edit">Edit</a>
+      <!--queryParams para el pasaje de datos a otro componente-->
+      <a href="#" class="btn btn-primary" style="margin-left: 10px;" routerLink="/pets/update" [queryParams]="{petId: pet.id}">Edit</a>
     </div>
     <div class="card-footer">
      Date of birth:  {{pet.dateOfBirth}}
